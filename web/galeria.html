@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Nyálcsorgatás</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!--favicon -->
+        <link rel="icon" href="https://adelehotel.hu/wp-content/uploads/2015/05/pecs-3.jpg">
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!--betütipus-->
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+        <style>
+            *{
+                font-family: 'Indie Flower', cursive;
+                font-size:large;
+            }
+            h4{
+                font-family: 'Indie Flower', cursive;
+                
+                font-weight:bold;
+            }
+            body{
+                padding-top:70px;
+            }
+            img{
+                max-height: 250px;
+            }
+            img {
+                filter: gray; 
+                -webkit-filter: grayscale(1); 
+                -webkit-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+                box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+                margin-bottom:20px;
+            }
+
+            img:hover {
+                filter: none;
+                -webkit-filter: grayscale(0); 
+
+            }
+        </style>
+        <script>
+
+        </script>
+    </head>
+
+    <body>
+        <nav class ="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> 
+                    </button>
+                    <a class="navbar-brand" href="/EtteremErtekelo">EvnEP</a>
+                </div>
+                <div class="collapse navbar-collapse" id="Navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/EtteremErtekelo/">Kezdőlap</a></li>
+                        <li><a href="http://facebook.com/ennivagynemennipecs">Facebook oldalunk</a></li>
+                        <li class="active"><a href="#">Galéria</a></li>
+                        <li><a>Reklám helye 2</a></li>
+                        <li><a>Reklám helye 3</a></li>
+                        <li><a>Reklám helye 4</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="w3-bar-item w3-button dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i> <!-- BEFEJEZÉSRE VÁR! --> 
+                            </a>
+                            <ul class="dropdown-menu dropdown-inverse">
+                                <li><input name="search" type="text" placeholder=" "> 
+
+                                    <button type="button" id="btnLogin" class="btn-sm btn-info">Keresés</button>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Regisztráció</a></li> <!-- BEFEJEZÉSRE VÁR! --> 
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-log-in"></span> Bejelentkezés</a>
+
+                            <ul class="dropdown-menu dropdown-inverse">
+                                <li> <input name="username" id="username" type="text" placeholder="felhasználónév"> 
+                                    <input name="password" id="password" type="password" placeholder="jelszó">
+                                    <button type="button" id="btnLogin" class="btn btn-info">Belépés</button>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav> <!-- NAVBAR VÉGE -->
+        <!-- SIDEBAR-->
+        <div class="container-fluid" style="margin-right:15%">
+
+            <div class="w3-sidebar w3-bar-block" style="width:15%;right:0">
+
+                <div  class="w3-panel w3-bar-block w3-light-grey">
+
+                    <div class="w3-container w3-white" style="margin-top:5%; margin-bottom:5%;">
+
+
+                        <h5 class="text-center">Éttermek Pécsett</h5><br>
+                        <iframe
+                            width="250"
+                            height="250"
+                            frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/search?key=AIzaSyCksyF6kPRPMf1LnNTqoEOslhQ1aISgocM&q=étterem+pécs" allowfullscreen>
+                        </iframe><br><br>
+
+
+                        <div class="text-center sidebar">
+                            Mégsem ennél étteremben? Főzz magadnak valami finomat! <br> <b><a href="http://www.nosalty.hu/receptek?=">Nosalty receptek</a></b> <br><br>
+
+                        </div>
+                        <div class="text-center sidebar">
+                            Vagy rendelj házhoz! <br> <b><a href="http://netpincer.hu">Netpincér</a></b><br>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- SIDEBAR VÉGE-->
+        <div class="container" style="width:85%; margin-right:15%;">
+            <div class="row">
+                <div class="col-lg-12 text-center"><h4>Pécs</h4>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/pecs1.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/pecs2.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/pecs3.jpg" onclick="window.open(this.src)"><br>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="width:85%; margin-right:15%;">
+            <div class="row">
+                <div class=" col-sm-4 text-center"><h4>Bohémia</h4><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/bohemia1.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/bohemia2.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/bohemia3.jpg" onclick="window.open(this.src)"><br>
+                </div>
+                <div class="col-sm-4 text-center"><h4>Ciao</h4><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/ciao1.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/ciao2.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/ciao3.jpg" onclick="window.open(this.src)"><br>
+                </div>
+                <div class="col-sm-4 text-center"><h4>Cool</h4><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/cool1.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/cool2.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/cool3.jpg" onclick="window.open(this.src)"><br>
+                </div>
+            </div><br><br>
+        </div>
+        <div class="container" style="width:85%; margin-right:15%;">
+            <div class="row">
+                <div class="col-sm-4  text-center"><h4>Csülök bár</h4><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/csulok1.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/csulok2.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/csulok3.jpg" onclick="window.open(this.src)"><br>
+                </div>
+                <div class="col-sm-4  text-center"><h4>Maci Lángosozó</h4><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/maci1.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/maci2.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/maci3.jpg" onclick="window.open(this.src)"><br>
+                </div>
+                <div class="col-sm-4 text-center"><h4>Streat</h4><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/streat1.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/streat2.jpg" onclick="window.open(this.src)"><br>
+                    <img class="img-fluid img-thumbnail" src="img/etteremkepek/streat3.jpg" onclick="window.open(this.src)"><br>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

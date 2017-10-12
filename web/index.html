@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Enni vagy nem enni?</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!--favicon -->
+        <link rel="icon" href="https://adelehotel.hu/wp-content/uploads/2015/05/pecs-3.jpg">
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!--betütipus-->
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+
+        <style>
+            *{
+                font-family: 'Indie Flower', cursive;
+                font-size:large;
+            }
+            h2{
+                font-family: 'Indie Flower', cursive;
+                font-weight: bold;
+
+            }
+
+            .navbar-nav{
+                font-size:small;
+            }
+
+
+            body {
+                padding-top:70px;
+
+            }
+             img {
+                
+                -webkit-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+                box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+                margin-bottom:20px;
+            }
+
+            .kep{
+                text-align: center;
+            }
+            .kep img {
+                width: 500px; 
+                height: auto; 
+                max-width: 85%;
+            }
+            .lablec{
+                margin-top:10px;
+                color:black;
+                font-size:13px;
+            }
+            .col-md-4{
+                text-align: center;
+            }
+
+            form {
+                width: 150px;
+            }
+
+            button {
+                border: 0;
+                background: transparent;
+                font-size: 1.5em;
+                margin: 0;
+                padding: 0;
+                float: right;
+            }
+
+            button:hover,
+            button:hover + button,
+            button:hover + button + button,
+            button:hover + button + button + button,
+            button:hover + button + button + button + button {
+                color: #cccc00;
+            }
+            img{
+                max-width: 90%; 
+                height: auto;
+            }
+        </style>
+        <script>
+            function betoltes() {
+                var elsoSor = document.getElementById("elsoSor");
+                var masodikSor = document.getElementById("masodikSor");
+                var harmadikSor = document.getElementById("harmadikSor");
+
+                var adatok = {"feladat": "listazas"};
+
+
+                $.ajax({
+                    url: "indexServlet",
+                    type: "POST",
+                    data: adatok,
+                    success: function (rd) {
+                        for (var i = 0; i < rd.length; i++)
+                            if (i <= 2) {
+                                {
+                                    elsoSor.innerHTML += '\n\
+                                                <div class="col-md-4 text-center" data-toggle="modal" data-target="#modal" onclick="modal()">\n\
+                                                    <h2>' + rd[i].nev + '</h2>\n\
+                                                    Nyitvatartás: ' + rd[i].nyitvatartas + ' h\n\
+                                                    <div class="kep">\n\
+                                                        <img src="' + rd[i].kep + '" class="img-fluid img-thumbnail">\n\
+                                                    </div>\n\
+                                                </div>\n\
+                                            </div>';
+
+                                }
+                                elsoSor.style.cursor = "pointer";
+                            } else if (i <= 5) {
+                                {
+                                    masodikSor.innerHTML += '\n\
+                                                <div class="col-md-4 text-center" data-toggle="modal" data-target="#modal" onclick="modal()">\n\
+                                                    <h2>' + rd[i].nev + '</h2>\n\
+                                                    Nyitvatartás: ' + rd[i].nyitvatartas + ' h\n\
+                                                    <div class="kep">\n\
+                                                        <img src="' + rd[i].kep + '" class="img-fluid img-thumbnail">\n\
+                                                    </div>\n\
+                                                </div>\n\
+                                            </div>';
+
+                                }
+                                masodikSor.style.cursor = "pointer"
+                            } else if (i <= 8) {
+                                {
+                                    harmadikSor.innerHTML += '\n\
+                                                <div class="col-md-4 text-center" data-toggle="modal" data-target="#modal" onclick="modal()">\n\
+                                                    <h2>' + rd[i].nev + '</h2>\n\
+                                                    Nyitvatartás: ' + rd[i].nyitvatartas + ' h\n\
+                                                    <div class="kep">\n\
+                                                        <img src="' + rd[i].kep + '" class="img-fluid img-thumbnail">\n\
+                                                    </div>\n\
+                                                </div>\n\
+                                            </div>';
+
+                                }
+                                harmadikSor.style.cursor = "pointer";
+                            }
+
+
+                    },
+                    error: function () {
+                        alert("hiba");
+                    }
+
+
+                });
+
+
+
+            }
+            function modal() {  // BEFEJEZÉSRE VÁR!  
+                var adatok = {"feladat": "modal"};
+                var modalHeader = document.getElementById("modal-fejlec");
+                var modalBody = document.getElementById("modalTest");
+                $.ajax({
+                    data: adatok,
+                    url: "modalServlet",
+                    TYPE: "POST",
+                    success: function (rd) {
+                        for (var i = 0; i < rd.length; i++)
+                            if (rd[i].id == 1) {
+                                modalHeader.innerHTML = '';
+                                modalTest.innerHTML = ' Az étterem az értékelések alapján a következő: <br>';
+                                modalHeader.innerHTML += ' ' + rd[i].nev + '';
+                                modalTest.innerHTML += 'Minőség: ' + rd[i].minoseg + '&#9733; <br> Kiszolgálás: ' + rd[i].kiszolgalas + '&#9733; <br> Higiénia: ' + rd[i].higienia + '&#9733; <br>Ár: ' + rd[i].ar + '&#9733;';
+                            } else if (rd[i].id == 2) {
+                                modalHeader.innerHTML = '';
+                                modalTest.innerHTML = ' Az étterem az értékelések alapján a következő: <br>';
+                                modalHeader.innerHTML += ' ' + rd[i].nev + '';
+                                modalTest.innerHTML += 'Minőség: ' + rd[i].minoseg + '&#9733; <br> Kiszolgálás: ' + rd[i].kiszolgalas + '&#9733; <br> Higiénia: ' + rd[i].higienia + '&#9733; <br>Ár: ' + rd[i].ar + '&#9733;';
+                            } else if (rd[i].id == 3) {
+                                modalHeader.innerHTML = '';
+                                modalTest.innerHTML = ' Az étterem az értékelések alapján a következő: <br>';
+                                modalHeader.innerHTML += ' ' + rd[i].nev + '';
+                                modalTest.innerHTML += 'Minőség: ' + rd[i].minoseg + '&#9733; <br> Kiszolgálás: ' + rd[i].kiszolgalas + '&#9733; <br> Higiénia: ' + rd[i].higienia + '&#9733; <br>Ár: ' + rd[i].ar + '&#9733;';
+                            } else if (rd[i].id == 4) {
+                                modalHeader.innerHTML = '';
+                                modalTest.innerHTML = ' Az étterem az értékelések alapján a következő:<br> ';
+                                modalHeader.innerHTML += ' ' + rd[i].nev + '';
+                                modalTest.innerHTML += 'Minőség: ' + rd[i].minoseg + '&#9733; <br> Kiszolgálás: ' + rd[i].kiszolgalas + '&#9733; <br> Higiénia: ' + rd[i].higienia + '&#9733; <br>Ár: ' + rd[i].ar + '&#9733;';
+                            } else if (rd[i].id == 5) {
+                                modalHeader.innerHTML = '';
+                                modalTest.innerHTML = ' Az étterem az értékelések alapján a következő: <br>';
+                                modalHeader.innerHTML += ' ' + rd[i].nev + '';
+                                modalTest.innerHTML += 'Minőség: ' + rd[i].minoseg + '&#9733; <br> Kiszolgálás: ' + rd[i].kiszolgalas + '&#9733; <br> Higiénia: ' + rd[i].higienia + '&#9733; <br>Ár: ' + rd[i].ar + '&#9733;';
+                            } else if (rd[i].id == 6) {
+                                modalHeader.innerHTML = '';
+                                modalTest.innerHTML = ' Az étterem az értékelések alapján a következő: <br>';
+                                modalHeader.innerHTML += ' ' + rd[i].nev + '';
+                                modalTest.innerHTML += 'Minőség: ' + rd[i].minoseg + '&#9733; <br> Kiszolgálás: ' + rd[i].kiszolgalas + '&#9733; <br> Higiénia: ' + rd[i].higienia + '&#9733; <br>Ár: ' + rd[i].ar + '&#9733;';
+                            }
+
+
+                    },
+                    error: function () {
+                        alert("kiscica");
+                    }
+
+
+
+
+
+                });
+            }
+
+        </script>
+    </head>
+    <body onload="betoltes()">
+
+        <nav class ="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> 
+                    </button>
+                    <a class="navbar-brand" href="#">EvnEP</a>
+                </div>
+                <div class="collapse navbar-collapse" id="Navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Kezdőlap</a></li>
+                        <li><a href="http://facebook.com/ennivagynemennipecs">Facebook oldalunk</a></li>
+                        <li><a href="galeria.html">Galéria</a></li>
+                        <li><a>Reklám helye 2</a></li>
+                        <li><a>Reklám helye 3</a></li>
+                        <li><a>Reklám helye 4</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                             <a href="#" class="w3-bar-item w3-button dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i> <!-- BEFEJEZÉSRE VÁR! --> 
+                            </a>
+                            <ul class="dropdown-menu dropdown-inverse">
+                                <li><input name="search" type="text" placeholder=" "> 
+                                    
+                                    <button type="button" id="btnLogin" class="btn-sm btn-info">Keresés</button>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Regisztráció</a></li> <!-- BEFEJEZÉSRE VÁR! --> 
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-log-in"></span> Bejelentkezés</a>
+
+                            <ul class="dropdown-menu dropdown-inverse">
+                                <li> <input name="username" id="username" type="text" placeholder="felhasználónév"> 
+                                    <input name="password" id="password" type="password" placeholder="jelszó">
+                                    <button type="button" id="btnLogin" class="btn btn-info">Belépés</button>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>  <!-- NAVBAR VÉGE -->
+        <div class="container-fluid" style="margin-right:15%"> <!-- SIDEBAR-->
+            <div class="w3-sidebar w3-bar-block" style="width:15%;right:0">
+
+                <div  class="w3-panel w3-bar-block w3-light-grey">
+
+                    <div class="w3-container w3-white" style="margin-top:5%; margin-bottom:5%;">
+
+                        <h5 class="text-center">Éttermek Pécsett</h5><br>
+                        <iframe
+                            width="250"
+                            height="250"
+                            frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/search?key=AIzaSyCksyF6kPRPMf1LnNTqoEOslhQ1aISgocM&q=étterem+pécs" allowfullscreen>
+                        </iframe><br><br>
+
+
+                        <div class="text-center sidebar">
+                            Mégsem ennél étteremben? Főzz magadnak valami finomat! <br> <b><a href="http://www.nosalty.hu/receptek?=">Nosalty receptek</a></b> <br><br>
+
+                        </div>
+                        <div class="text-center sidebar">
+                            Vagy rendelj házhoz! <br> <b><a href="http://netpincer.hu">Netpincér</a></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- SIDEBAR VÉGE-->
+
+        <div class="container" >
+            <img src="img/hatter.jpg.png" class="img-fluid" alt="Responsive image" ><br><br><br>
+            <h2 class="text-center" style="margin-right:15%;">Üdvözlet! Az itt található értékelések alapján eldöntheted, hogy a Pécsett található 
+                éttermek közül melyik lenne számodra a megfelelő, ahol elfogyaszhatod a jól megérdemelt kosztodat! </h2>
+        </div>
+
+
+        <div class='container' id='elsoSor' style="width:85%; margin-right:15%;">
+
+        </div>
+        <div class='container' id='masodikSor' style="width:85%; margin-right:15%;">
+
+        </div>
+        <div class='container' id='harmadikSor' style="width:85%; margin-right:15%;">
+
+        </div>
+
+        <!-- Modal -->
+        <div id="modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="modal-fejlec"></h4>
+                    </div><br>
+                    <div class="modal-body">
+                        <div class="col-md-12 text-center" id="modalTest">
+                            Az étterem az értékelések alapján a következő:
+
+
+
+
+
+                            <!--  Kérlek értékeld az éttermet a következő szempontok alapján:
+                              Higiénia:
+                              <div class="col-md-12 text-center" id="modalHigienia">
+                                  <input type="hidden" name="rating[post_id]" value="3">
+                                  <button type="submit" name="rating[rating]" value="5" onclick="rating5()" id="otoscsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="4" onclick="rating4()" id="negyescsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="3" onclick="rating3()" id="harmascsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="2" onclick="rating2()" id="kettescsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="1" onclick="rating1()" id="egyescsillag">&#9733;</button>
+                              </div><br>
+                              Kiszolgálás:
+                              <div class="col-md-12 text-center" id="modalKiszolgalas">
+                                  <input type="hidden" name="rating[post_id]" value="3">
+                                  <button type="submit" name="rating[rating]" value="5" onclick="rating5()" id="otoscsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="4" onclick="rating4()" id="negyescsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="3" onclick="rating3()" id="harmascsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="2" onclick="rating2()" id="kettescsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="1" onclick="rating1()" id="egyescsillag">&#9733;</button>
+                              </div><br>
+                              Minőség:
+                              <div class="col-md-12 text-center">
+                                  <input type="hidden" name="rating[post_id]" value="3">
+                                  <button type="submit" name="rating[rating]" value="5" onclick="rating5()" id="otoscsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="4" onclick="rating4()" id="negyescsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="3" onclick="rating3()" id="harmascsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="2" onclick="rating2()" id="kettescsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="1" onclick="rating1()" id="egyescsillag">&#9733;</button>
+                              </div><br>
+                              Ár:
+                              <div>
+                                  <input type="hidden" name="rating[post_id]" value="3">
+                                  <button type="submit" name="rating[rating]" value="5" onclick="rating5()" id="otoscsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="4" onclick="rating4()" id="negyescsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="3" onclick="rating3()" id="harmascsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="2" onclick="rating2()" id="kettescsillag">&#9733;</button>
+                                  <button type="submit" name="rating[rating]" value="1" onclick="rating1()" id="egyescsillag">&#9733;</button>
+                              </div><br> -->
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-xs btn-default" data-dismiss="modal">Bezárás</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="col-md-12 text-center lablec">
+            Üzenj nekünk! <a href="mailto:ennivagynemennipecs@gmail.com">E-mail</a> az oldal kizárólagos üzemeltetője:Gipsz Jakab Bt. Budapest, Példa utca 13
+        </div>
+
+
+
+    </body>
+</html>
